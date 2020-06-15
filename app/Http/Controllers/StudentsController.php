@@ -63,6 +63,17 @@ class StudentsController extends Controller
         return view('students.edit', compact('student'));
     }
 
+    public function search(Request $request)
+    {
+        $cari = $request->search;
+
+        $post = DB::table('students')
+        ->where('nama','like',"%".$cari."%")
+        ->paginate();
+        
+        return view('students.index',['students' => $post]);
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -98,4 +109,6 @@ class StudentsController extends Controller
         Student::destroy($student->id);
         return redirect('/students') ->with ('status', 'Data Mahasiswa Telah Dihapus!!');
     }
+
+    
 }
