@@ -9,7 +9,18 @@
             <h1 class="mt-10">Daftar Mahasiswa Baru</h1>
 
             <a href="/students/create" class="btn btn-primary my-3">Tambah Data</a>
-            
+            </div>
+            <div class="col-md-4">
+                <form action="/search" method="get">
+                    <div class="input-group mt-4">
+                        <input type="search" name="search" class="form-control">
+                        <span class="input-group-prepend">
+                        <button type="submit" class="btn btn-success">Search</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
             @if (session('status'))
                 <div class="alert alert-success">
                     {{ session('status')}}
